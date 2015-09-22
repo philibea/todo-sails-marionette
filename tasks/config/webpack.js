@@ -27,7 +27,8 @@ module.exports = function (grunt) {
           jquery: 'jquery',
           Backbone: 'backbone',
           underscore: 'underscore',
-          Marionette: 'backbone.marionette'
+          Marionette: 'backbone.marionette',
+          Radio: 'backbone.radio'
         }
       },
       plugins: [
