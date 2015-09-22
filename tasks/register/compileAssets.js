@@ -3,7 +3,7 @@ module.exports = function (grunt) {
 		'clean:dev',
 		'jst:dev',
 		'stylus:dev',
-		'copy:dev',
-		'webpack:dev'
+    'webpack:dev',
+    'copy:dev'
 	]);
 };

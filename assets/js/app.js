@@ -1,3 +1,4 @@
+import * as Mn from 'Marionette';
 
 var app = {
   views: {},
@@ -7,6 +8,9 @@ var app = {
     KEY_ESCAPE: 27
   }
 };
+
+console.log(Backbone);
+console.log(_);
 
 app.token = $('meta[name=csrfToken]').attr('content');
 
@@ -23,6 +27,8 @@ Backbone.sync = (function(original) {
     original(method, model, options);
   };
 })(Backbone.sync);
+
+console.log(Backbone.sync);
 
 app.init = function () {
   // Init Router
