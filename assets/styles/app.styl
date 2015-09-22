@@ -1,0 +1,285 @@
+// Normalize
+@import '../components/normalize-css/normalize.css'
+@import './animations'
+
+bg-color = #fff2ec
+
+html, body
+  height 100%
+
+.container-fluid
+  height 100%
+  background no-repeat url(/images/bg.jpg)
+  background-size cover
+  overflow-y auto
+
+.todos
+  max-width 400px
+  color: #333
+  padding-top: 20px
+
+  &__head
+    color bg-color
+
+.todo
+  width: 100%
+  min-height: 50px
+  padding: 10px
+  margin-bottom: 10px
+  display: flex
+  justify-content space-between
+  border-radius 3px
+  background-color bg-color
+  transition: opacity 0.4s ease-out
+  cursor move
+
+  &_completed
+    opacity 0.7
+
+  &_editing
+    cursor: default
+
+  &__form
+    display: flex
+    justify-content space-between
+
+    .todo__completion
+      min-width 0
+
+    .todo__name, .todo__date
+      margin-right: 10px
+
+  &__name
+    width: 65%
+
+  &__date
+    width: 20%
+    overflow hidden
+    text-overflow ellipsis
+
+  &__completion
+    width: 15%
+    min-width 80px
+    height: 34px
+    text-align right
+
+  &__button
+    appearance none
+    transition background-color 0.15s ease-out
+
+    &:hover, &:active
+      background-color lightgray
+
+    &:focus
+      outline 0 !important
+
+  &__stamp
+    width: 35px
+    height: 35px
+
+    display: inline-block
+    background no-repeat url(/images/done.gif)
+    background-size contain
+
+.form-container
+  position: fixed
+  top: 20px
+  left: 50%
+
+.form
+  width: 400px
+
+  &__textarea
+    width: 80%
+    min-height 100px
+    border: 1px solid gray
+    background-color bg-color
+    border-radius 3px
+    appearance: none
+    transition border-color 0.2s ease
+    resize: vertical
+
+    &:hover
+      border-color darkgrey
+
+  &__datepicker
+    width 15%
+    float right
+
+    input
+      height 40px
+      width 130px
+      padding-bottom: 15px
+      border-radius 3px
+      appearance: none
+      border: 1px solid gray
+      transition border-color 0.2s ease
+      background-color bg-color
+      cursor: pointer
+      text-align center
+
+      &:hover
+        border-color darkgrey
+
+  &__button
+    display: block
+    transition background-color 0.15s ease-out
+
+    &:hover, &:active
+      background-color lightgray
+
+    &:focus
+      outline 0 !important
+
+.trash
+  width: 100px
+  height: 100px
+  position: fixed
+  right: 50px
+  bottom 50px
+
+  &_deleted
+
+    .trash__image
+      opacity 0
+
+    .trash__tooltip-text
+      display: none
+
+    .trash__tooltip-text_alt
+      display: block
+      text-shadow: none
+
+    .trash__tooltip-cover
+      opacity 1
+
+    .trash__tooltip-text-line
+
+      &_small
+        transition-delay 1s
+        opacity 1
+
+      &_medium
+        transition-delay 0.5s
+        opacity 1
+
+      &_large
+        transition-delay 0.1s
+        opacity 1
+
+  &__drop
+    width: 500px
+    height: 100px
+    position: absolute
+    right: -50px
+    bottom: 0
+    z-index: 1
+
+  &__content
+    float right
+    position: relative
+    z-index: 2;
+
+    &:hover
+
+      .trash__image
+        opacity 0
+
+      .trash__tooltip-image
+        opacity 0.8
+
+      .trash__tooltip-text-line
+
+        &_small
+          transition-delay 1s
+          opacity 1
+
+        &_medium
+          transition-delay 0.5s
+          opacity 1
+
+        &_large
+          transition-delay 0.1s
+          opacity 1
+
+  &__image
+    display: block
+    transition opacity 0.15s ease
+
+    g
+      transition all 3s ease
+
+    &_dragover
+      animation shaking 0.2s ease-in-out infinite
+
+      g
+        fill #ff3922
+
+  &__tooltip
+    width: 150px
+    height: 150px
+    position: absolute
+    left -25px
+    top -25px
+    border-radius 50%
+    pointer-events none
+
+    &-cover
+      width: 100%
+      height: 100%
+      position: absolute
+      top: 0
+      left: 0
+      opacity 0
+      transition opacity 0.2s ease;
+      background-color bg-color
+      border-radius 50%
+
+    &-image
+      width: 100%
+      height: 100%
+      opacity 0
+      transition opacity 0.3s ease;
+      background transparent url(/images/hypno2.gif)
+      background-size contain
+      border-radius 50%
+      box-shadow inset 0 0 5px 7px rgba(0, 0, 0, 0.5)
+
+    &-text
+      position: absolute
+      top: 20px
+      left 0
+      right 0
+      color #ffffff
+      font-weight: bold
+      z-index: 3
+      text-shadow: 2px 0 4px rgba(0, 0, 0, 0.9);
+
+      &_alt
+        display: none
+
+        span
+          font-size: 24px !important
+          color #333333 !important
+
+        .trash__tooltip-text-line
+          margin-bottom: 8px
+
+      &-line
+        text-align center
+        display: block
+        margin-bottom: 10px
+        opacity 0
+
+      &-line_small
+        font-size: 18px
+        transition opacity 0.1s ease 0.1s;
+
+
+      &-line_mediun
+        font-size: 24px
+        transition opacity 0.1s ease 0.1s;
+
+      &-line_large
+        font-size: 28px
+        transition opacity 0.1s ease 0.1s;

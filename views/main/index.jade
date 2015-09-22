@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  section.container-fluid
+    .row
+      section.col-lg-6.col-sm-12.todos-container
+      aside.col-lg-6.col-sm-12.form-container
+  include ../partials/trash
+
+  // templates
+  include ../templates/index
+
+  script(src="/js/app.js")

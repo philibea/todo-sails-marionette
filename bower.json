@@ -1,0 +1,29 @@
+{
+  "name": "todo-sails-marionette-ractive",
+  "version": "0.0.0",
+  "authors": [
+    "Kiryl Anokhin <alyrik@gmail.com>"
+  ],
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.2.2",
+    "backbone.marionette": "~2.4.3",
+    "bootstrap": "~3.3.5",
+    "handlebars": "~4.0.0",
+    "jquery": "~2.1.4",
+    "moment": "~2.10.6",
+    "normalize-css": "normalize.css#~3.0.3",
+    "pickadate": "~3.5.6",
+    "underscore": "~1.8.3"
+  }
+}

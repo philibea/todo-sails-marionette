@@ -1,0 +1,5 @@
+script(type="text/template", id='editTemplate')
+  textarea.todo__name(rows="1", name="name") {{name}}
+  input.todo__date(type='text', name="date", value="{{date}}")
+  .todo__completion
+    button.todo__button.btn(type='submit') Save

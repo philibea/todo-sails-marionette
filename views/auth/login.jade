@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  if (errors)
+    each error in errors
+      p= error
+
+  a(href="/register") Register
+  form(method="post", action="/auth/login")
+    input(type='text', name="email", placeholder='email')
+    input(type='password', name="password", placeholder='password')
+    input(type="hidden", name="_csrf", value="#{_csrf}")
+    button(type="submit") Login
+    if (error)
+      div(style="color: red;") Something is incorrect. Try again.
