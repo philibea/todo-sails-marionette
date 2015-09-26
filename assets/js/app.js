@@ -1,5 +1,5 @@
-import * as Mn from 'Marionette';
-import 'Radio';
+import * as Mn from 'backbone.marionette';
+import 'backbone.radio';
 import services from './services/services.js';
 import controller from './controllers/app-controller.js'
 import RootView from './views/root-view';
@@ -28,7 +28,5 @@ app.router = new Mn.AppRouter({
   }
 });
 // -----
-
-
 
 export default app;

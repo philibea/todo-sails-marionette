@@ -22,23 +22,16 @@ module.exports = function (grunt) {
         ]
       },
       resolve: {
-        root: path.resolve(__dirname, "../../assets/components/"),
-        alias: {
-          jquery: 'jquery',
-          Backbone: 'backbone',
-          underscore: 'underscore',
-          Marionette: 'backbone.marionette',
-          Radio: 'backbone.radio'
-        }
+        root: [path.join(__dirname, "../../assets/components")]
       },
       plugins: [
+        new webpack.ResolverPlugin(
+          new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
+        ),
         new webpack.ProvidePlugin({
           $: "jquery",
-          jQuery: 'jquery',
-          Backbone: 'Backbone',
-          underscore: 'underscore',
-          _: 'underscore',
-          Marionette: 'Marionette'
+          jQuery: "jquery",
+          "window.jQuery": "jquery"
         })
       ]
     }

@@ -1,4 +1,5 @@
-import * as Mn from 'Marionette';
+import * as Mn from 'backbone.marionette';
+import {templates} from '../templates.js';
 
 export default Mn.LayoutView.extend({
   el: '#app-view',
@@ -7,11 +8,11 @@ export default Mn.LayoutView.extend({
     todos: '.todos-container',
     trash: 'footer.trash'
   },
-  initialize() {
-    console.log('initialized');
+  initialize(options) {
   },
 
   render() {
     return this;
   }
+
 });

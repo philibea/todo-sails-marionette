@@ -1,10 +1,9 @@
-script(type="text/template", id='todoTemplate')
-  .todo__name {{name}}
-  .todo__date {{date}}
-  | {{#if completed}}
-  .todo__completion
-    .todo__stamp
-  | {{else}}
-  .todo__completion
-    button.todo__button.btn Done?
-  | {{/if}}
+.todo__name {{name}}
+.todo__date {{date}}
+| {{#if completed}}
+.todo__completion
+  .todo__stamp
+| {{else}}
+.todo__completion
+  button.todo__button.btn Done?
+| {{/if}}
