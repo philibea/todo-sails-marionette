@@ -1,5 +1,4 @@
 import * as Mn from 'backbone.marionette';
-import {templates} from '../templates.js';
 
 export default Mn.LayoutView.extend({
   el: '#app-view',
