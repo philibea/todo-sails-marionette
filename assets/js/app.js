@@ -1,8 +1,6 @@
 import * as Mn from 'backbone.marionette';
 import 'backbone.radio';
-//import '../components/pickadate/lib/picker.js';
 import '../components/pickadate/lib/picker.date.js';
-//import 'pickadate.date';
 import services from './services/services.js';
 import controller from './controllers/app-controller.js';
 import RootView from './views/root-view';
@@ -17,6 +15,8 @@ var app = new Mn.Application({
 });
 
 app.on('start', () => {
+
+  app.todosChannel = Backbone.Radio.channel('todos');
 
   app.router = new Mn.AppRouter({
     controller,

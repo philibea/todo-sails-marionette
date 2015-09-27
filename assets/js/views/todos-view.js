@@ -10,7 +10,8 @@ export default Mn.LayoutView.extend({
   template: templates['todos-template'],
 
   ui: {
-    list: '.todos-list'
+    list: '.todos-list',
+    counter: '.todos__head span'
   },
 
   regions: {
@@ -19,6 +20,7 @@ export default Mn.LayoutView.extend({
 
   initialize() {
     "use strict";
+    app.todosChannel.reply('change:length', this.updateCounter, this);
   },
 
   onRender() {
@@ -27,5 +29,10 @@ export default Mn.LayoutView.extend({
       childView: Todo
     });
     this.showChildView('list', app.todoList);
+    this.updateCounter();
+  },
+
+  updateCounter: function () {
+    this.ui.counter.text(app.todos.length);
   }
 });

@@ -14,5 +14,6 @@ export default Backbone.Collection.extend({
 
   initialize() {
     "use strict";
+    app.todosChannel.reply('sort', this.sort, this);
   }
 });

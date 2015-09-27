@@ -62,6 +62,7 @@ let FormView = Mn.ItemView.extend({
       method: 'POST',
       success: function (data) {
         app.todos.add(data);
+        app.todosChannel.request('change:length');
         self.ui.textarea.val('');
       },
       error: function () {
