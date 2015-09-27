@@ -1,32 +1,35 @@
 import * as Mn from 'backbone.marionette';
 import 'backbone.radio';
+//import '../components/pickadate/lib/picker.js';
+import '../components/pickadate/lib/picker.date.js';
+//import 'pickadate.date';
 import services from './services/services.js';
-import controller from './controllers/app-controller.js'
+import controller from './controllers/app-controller.js';
 import RootView from './views/root-view';
+import {config} from './config.js';
 
-let app = new Mn.Application({
+var app = new Mn.Application({
   globals: {
     KEY_ESCAPE: 27
   },
-  token: $('meta[name=csrfToken]').attr('content')
+  token: $('meta[name=csrfToken]').attr('content'),
+  config
 });
 
 app.on('start', () => {
+
+  app.router = new Mn.AppRouter({
+    controller,
+    appRoutes: {
+      '': 'index'
+    }
+  });
+
   app.rootView = new RootView();
   app.rootView.render();
   Backbone.history.start({pushState: true});
 });
 
 services.init();
-
-// ROUTER
-
-app.router = new Mn.AppRouter({
-  controller,
-  appRoutes: {
-    '': 'index'
-  }
-});
-// -----
 
 export default app;

@@ -18,7 +18,8 @@ module.exports = function (grunt) {
             include: [
               path.resolve(__dirname, "../../assets/js")
             ]
-          }
+          },
+          { test: /picker\.date\.js/, loader: 'imports?define=>false'}
         ]
       },
       resolve: {
@@ -31,7 +32,8 @@ module.exports = function (grunt) {
         new webpack.ProvidePlugin({
           $: "jquery",
           jQuery: "jquery",
-          "window.jQuery": "jquery"
+          "window.jQuery": "jquery",
+          picker: 'picker.js'
         })
       ]
     }
