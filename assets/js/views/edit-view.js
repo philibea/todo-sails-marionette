@@ -32,6 +32,8 @@ export default Mn.ItemView.extend({
       formatSubmit: 'yyyy/mm/dd',
       hiddenName: true
     });
+    app.todosChannel.request('set:closers');
+    app.todosChannel.replyOnce('remove:edit', this.remove, this);
   },
 
   saveModel(e) {
@@ -47,9 +49,9 @@ export default Mn.ItemView.extend({
       { name, date },
       {
         success() {
-          //app.views.globalView.$el.off('click.close keyup.close');
           self.remove();
-          app.todosChannel.request('rerender sort');
+          app.todosChannel.stopReplying('remove:edit');
+          app.todosChannel.request('unset:closers rerender sort');
         },
 
         error(model, response) {

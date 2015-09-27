@@ -43,7 +43,9 @@ export default Mn.ItemView.extend({
 
   editTodo() {
     "use strict";
-    if (this.model.get('completed')) return false;
+    if (this.model.get('completed') || app.hasEdition) return false;
+    app.hasEdition = true;
+
     var editView = new EditView({
       model: this.model,
       actualView: this
@@ -52,6 +54,7 @@ export default Mn.ItemView.extend({
     this.$el.attr('draggable', false);
     this.$el.addClass('todo_editing');
     this.$el.html(editView.el);
+    editView.ui.textarea.focus();
     app.todosChannel.replyOnce('rerender', this.rerender, this);
   },
 
@@ -59,5 +62,7 @@ export default Mn.ItemView.extend({
     "use strict";
     this.render();
     this.delegateEvents();
+    this.$el.removeClass('todo_editing');
+    app.hasEdition = false;
   }
 });
